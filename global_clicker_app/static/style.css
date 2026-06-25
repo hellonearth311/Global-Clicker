@@ -175,3 +175,14 @@ body {
   transform: translateY(1px) scale(0.97);
   /* box-shadow: 0 3px 10px rgba(186, 59, 70, 0.3); */
 }
+
+#footer {
+  font-family: "Fira Sans";
+  font-weight: 300;
+  color: var(--accent-text-color);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
