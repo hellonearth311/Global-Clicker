@@ -11,8 +11,8 @@ def get_user_ip(request):
 
 def get_location_from_ip(ip_address):
     response = requests.get(f"https://ip-api.com/json/{ip_address}")
-    data = response.json()
     try:
+        data = response.json()
         return data.get('lat'), data.get('lon')
     except:
         return 0.0, 0.0
