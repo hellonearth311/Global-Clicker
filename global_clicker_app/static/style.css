@@ -4,8 +4,8 @@
   --primary-color: #ba3b46;
   --secondary-color: #ed9b40;
   --accent-color: #796465;
-  --text-color: #73ba9b;
-  --accent-text-color: #68ae90;
+  --text-color: #5e9b80;
+  --accent-text-color: #5b9b7f;
   --bg-color: #d5f2e3;
 }
 
@@ -157,21 +157,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: 15px;
   font-family: "Fira Sans";
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(186, 59, 70, 0.35);
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  /* box-shadow: 0 6px 20px rgba(186, 59, 70, 0.35); */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out/**, box-shadow 0.2s ease-in-out**/;
 }
 
 #clicker:hover {
   background-color: #a8313b;
-  box-shadow: 0 8px 28px rgba(186, 59, 70, 0.45);
+  /* box-shadow: 0 8px 28px rgba(186, 59, 70, 0.45); */
 }
 
 #clicker:active {
   transform: translateY(1px) scale(0.97);
-  box-shadow: 0 3px 10px rgba(186, 59, 70, 0.3);
+  /* box-shadow: 0 3px 10px rgba(186, 59, 70, 0.3); */
 }
