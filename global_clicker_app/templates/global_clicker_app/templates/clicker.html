@@ -11,8 +11,9 @@
     <div class="content">
         <h1 id="title">global clicker</h1>
         <p id="clicks">total clicks: {{ clicks }}</p>
-        <p>ip: {{ ip }}</p>
-        <button id="clicker" onclick="handleClick()">click me or press any key!</button>
+        <form action="{% url 'click' %}">
+            <button id="clicker" onclick="handleClick()" type="submit">click me or press any key!</button>
+        </form>
     </div>
 
     <script>
