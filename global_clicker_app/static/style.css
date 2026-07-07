@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --primary-color: #ba3b46;
-  --secondary-color: #ed9b40;
-  --accent-color: #796465;
-  --text-color: #5e9b80;
-  --accent-text-color: #5b9b7f;
-  --bg-color: #d5f2e3;
+    --color-bg: #FFFFFF;
+    --color-surface: #F3F4F6;
+    --color-primary: #3B82F6;
+    --color-primary-hover: #2563EB;
+    --color-secondary: #10B981;
+    --color-accent: #60A5FA;
+    --color-text: #111827;
+    --color-text-muted: #6B7280;
+    --color-border: #D1D5DB;
 }
 
 /* fonts section */
@@ -120,7 +123,7 @@
 /* fonts section over */
 
 body {
-  background-color: var(--bg-color);
+  background-color: var(--color-bg);
   margin: 0;
 }
 
@@ -135,7 +138,7 @@ body {
 #title {
   font-size: 75px;
   text-align: center;
-  color: var(--text-color);
+  color: var(--color-text);
   letter-spacing: -1px;
   margin: 0;
 }
@@ -144,13 +147,12 @@ body {
   font-size: 22px;
   font-weight: 300;
   text-align: center;
-  color: var(--accent-text-color);
+  color: var(--color-text-muted);
   margin: 0;
 }
 
 #clicker {
-  background-color: var(--primary-color);
-  border: none;
+  background-color: var(--color-primary);
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -160,26 +162,24 @@ body {
   font-size: 15px;
   font-family: "Fira Sans";
   font-weight: 600;
-  color: #fff;
+  color: var(--color-surface);
   cursor: pointer;
-  /* box-shadow: 0 6px 20px rgba(186, 59, 70, 0.35); */
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out/**, box-shadow 0.2s ease-in-out**/;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  border: 5px solid var(--color-border);
 }
 
 #clicker:hover {
-  background-color: #a8313b;
-  /* box-shadow: 0 8px 28px rgba(186, 59, 70, 0.45); */
+  background-color: var(--color-primary-hover);
 }
 
 #clicker:active {
   transform: translateY(1px) scale(0.97);
-  /* box-shadow: 0 3px 10px rgba(186, 59, 70, 0.3); */
 }
 
 #footer {
   font-family: "Fira Sans";
   font-weight: 300;
-  color: var(--accent-text-color);
+  color: var(--color-text);
   text-align: center;
   position: fixed;
   bottom: 0;
