@@ -5,8 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>global clicker</title>
+
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+
     <script src="{% static 'script.js' %}" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="content">
@@ -20,5 +35,23 @@
             <p>made by swarit narang</p>
         </footer>
     </div>
+
+    <div id="map"></div>
+    <!-- the true hell -->
+    <script>
+        const lat = 40.0000;
+        const lng = -74.0000;
+
+        const zoom = 13;
+
+        const map = L.map('map').setView([lat, lng], zoom);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        const marker = L.marker([lat, lng]).addTo(map);
+        marker.bindPopup("hi lol");
+    </script>
 </body>
 </html>
