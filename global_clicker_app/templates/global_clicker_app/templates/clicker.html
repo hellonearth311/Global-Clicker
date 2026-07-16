@@ -20,6 +20,10 @@
         #map {
             height: 450px;
             width: 40%;
+            border-radius: 15px;
+            border-width: 3px;
+            border-style: solid;
+            border-color: #D1D5DB;
         }
         .leaflet-control-attribution {
             border-top: none !important;
@@ -45,7 +49,7 @@
     </div>
     <!-- the true hell -->
     <script>
-        const lat = 40.0000;
+        const lat = 80.0000;
         const lng = -74.0000;
 
         const zoom = 1;
@@ -59,7 +63,7 @@
             dragging: false,
             keyboard: false,
             tapHold: false
-        }).setView([lat, lng], zoom);
+        }).setView([30, 0], zoom);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             maxZoom: 19,
