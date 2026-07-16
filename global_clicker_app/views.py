@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
@@ -27,9 +28,18 @@ def clicker(request):
         if click.latitude is not None and click.longitude is not None
     ]
 
+    top_countries = [
+        {"name": row["country"], "clicks": row["clicks"]}
+        for row in clicks.exclude(country__isnull=True)
+        .values("country")
+        .annotate(clicks=Count("id"))
+        .order_by("-clicks")[:10]
+    ]
+
     return render(request, "global_clicker_app/templates/clicker.html", {
-        "clicks": totalClicks, 
-        "clicks_list": display_clicks
+        "clicks": totalClicks,
+        "clicks_list": display_clicks,
+        "countries": top_countries
     })
 
 @require_POST

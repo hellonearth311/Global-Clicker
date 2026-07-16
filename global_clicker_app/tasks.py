@@ -26,7 +26,7 @@ def _lookup_locations(ip_addresses):
     locations = {}
     for ip, result in zip(ips, results):
         if isinstance(result, dict) and result.get("status") == "success":
-            locations[ip] = (result.get("lat"), result.get("lon"))
+            locations[ip] = (result.get("lat"), result.get("lon"), result.get("country"))
     return locations
 
 
@@ -41,8 +41,9 @@ def flush_pending_clicks():
     clicks = [
         Click(
             ip_address=p.ip_address,
-            latitude=locations.get(p.ip_address, (0.0, 0.0))[0],
-            longitude=locations.get(p.ip_address, (0.0, 0.0))[1],
+            latitude=locations.get(p.ip_address, (0.0, 0.0, "United States"))[0],
+            longitude=locations.get(p.ip_address, (0.0, 0.0, "United States"))[1],
+            country=locations.get(p.ip_address, (0.0, 0.0, "United States"))[2],
             timestamp=p.timestamp,
         )
         for p in pending

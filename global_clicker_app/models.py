@@ -5,6 +5,7 @@ class Click(models.Model):
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
+    country = models.CharField(null=True, blank=True)
     timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
