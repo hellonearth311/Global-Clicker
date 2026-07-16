@@ -30,7 +30,7 @@
             box-shadow: none !important;
         }
         .leaflet-container {
-            background: #262626;
+            background: #D4DADC;
         }
     </style>
 </head>
@@ -78,7 +78,7 @@
             tapHold: false
         }).setView([30, 0], zoom);
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: ''
         }).addTo(map); 
