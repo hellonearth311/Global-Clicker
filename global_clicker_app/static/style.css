@@ -125,6 +125,7 @@
 body {
   background-color: var(--color-bg);
   margin: 0;
+  font-family: "Fira Sans";
 }
 
 .content {
@@ -141,6 +142,7 @@ body {
   color: var(--color-text);
   letter-spacing: -1px;
   margin: 0;
+  margin-bottom: 15px;
 }
 
 #clicks {
@@ -166,7 +168,8 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
   border: 5px solid var(--color-border);
-  margin-top: 125px;
+  margin-top: 85px;
+  margin-bottom: 50px;
 }
 
 #clicker:hover {

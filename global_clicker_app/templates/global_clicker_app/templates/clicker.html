@@ -18,8 +18,15 @@
 
     <style>
         #map {
-            height: 500px;
-            width: 100%;
+            height: 450px;
+            width: 40%;
+        }
+        .leaflet-control-attribution {
+            border-top: none !important;
+            box-shadow: none !important;
+        }
+        .leaflet-container {
+            background: #262626;
         }
     </style>
 </head>
@@ -31,27 +38,42 @@
         <form action="{% url 'click' %}" id="clickForm">
             <button type="submit" style="display: none;"></button>
         </form>
+        <div id="map"></div>
         <footer id="footer">
-            <p>made by swarit narang</p>
+            <p>made by swarit narang <br> <span style="font-size: 10px;">map data © OpenStreetMap contributors © CARTO</span></p>
         </footer>
     </div>
-
-    <div id="map"></div>
     <!-- the true hell -->
     <script>
         const lat = 40.0000;
         const lng = -74.0000;
 
-        const zoom = 13;
+        const zoom = 1;
 
-        const map = L.map('map').setView([lat, lng], zoom);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        const map = L.map('map', { 
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleCLickZoom: false,
+            boxZoom: false,
+            touchZoom: false,
+            dragging: false,
+            keyboard: false,
+            tapHold: false
+        }).setView([lat, lng], zoom);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
+            attribution: ''
         }).addTo(map);
 
-        const marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup("hi lol");
+        const marker = L.circleMarker([lat, lng], {
+            radius: 2,
+            fillColor: "#10B981",
+            color: "#10B981",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map);
     </script>
 </body>
 </html>
