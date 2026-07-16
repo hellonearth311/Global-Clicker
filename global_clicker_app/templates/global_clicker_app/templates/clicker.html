@@ -47,17 +47,17 @@
             <p>made by swarit narang <br> <span style="font-size: 10px;">map data © OpenStreetMap contributors © CARTO</span></p>
         </footer>
     </div>
-    <!-- the true hell -->
+
+    {{ clicks_list|json_script:"clicks-data" }}
     <script>
-        const lat = 80.0000;
-        const lng = -74.0000;
+        const clickPoints = JSON.parse(document.getElementById('clicks-data').textContent);
 
         const zoom = 1;
 
         const map = L.map('map', { 
             zoomControl: false,
             scrollWheelZoom: false,
-            doubleCLickZoom: false,
+            doubleClickZoom: false,
             boxZoom: false,
             touchZoom: false,
             dragging: false,
@@ -68,16 +68,20 @@
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: ''
-        }).addTo(map);
+        }).addTo(map); 
 
-        const marker = L.circleMarker([lat, lng], {
-            radius: 2,
-            fillColor: "#10B981",
-            color: "#10B981",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-        }).addTo(map);
+        clickPoints.forEach(click => {
+            if (click.lat != null && click.lng != null) {
+                const marker = L.circleMarker([click.lat, click.lng], {
+                    radius: 2,
+                    fillColor: "#10B981",
+                    color: "#10B981",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+            }
+        })
     </script>
 </body>
 </html>

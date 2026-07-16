@@ -11,10 +11,23 @@ def redirect_to_clicker(request):
     return redirect("/clicker/")
 
 def clicker(request):
-    clicks = Click.objects.all().count() + PendingClick.objects.all().count()
+    clicks = Click.objects.all()
+    pendingClicks = PendingClick.objects.all()
+
+    totalClicks = clicks.count() + pendingClicks.count()
+
+    display_clicks = [
+        {
+            "lat": float(click.latitude),
+            "lng": float(click.longitude),
+        }
+        for click in clicks
+        if click.latitude is not None and click.longitude is not None
+    ]
 
     return render(request, "global_clicker_app/templates/clicker.html", {
-        "clicks": clicks
+        "clicks": totalClicks, 
+        "clicks_list": display_clicks
     })
 
 def click(request):
