@@ -1,4 +1,6 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
 from ipware import get_client_ip
 from .models import Click, PendingClick
 
@@ -30,8 +32,11 @@ def clicker(request):
         "clicks_list": display_clicks
     })
 
+@require_POST
 def click(request):
     ip_address = get_user_ip(request)
 
     PendingClick.objects.create(ip_address=ip_address)
-    return redirect('/clicker/')
+
+    total = Click.objects.count() + PendingClick.objects.count()
+    return JsonResponse({"clicks": total})
