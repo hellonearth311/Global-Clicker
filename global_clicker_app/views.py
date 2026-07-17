@@ -6,7 +6,7 @@ from ipware import get_client_ip
 from .models import Click, PendingClick
 
 def get_user_ip(request):
-    client_ip, is_routable = get_client_ip(request, proxy_count=1)
+    client_ip, is_routable = get_client_ip(request, proxy_order="right-most")
     if client_ip:
         return client_ip
 
