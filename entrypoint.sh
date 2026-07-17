@@ -36,6 +36,7 @@ with conn.cursor() as cur:
     cur.execute("SELECT pg_advisory_lock(727272)")
     try:
         subprocess.run(["python", "manage.py", "migrate", "--noinput"], check=True)
+        subprocess.run(["python", "manage.py", "createcachetable"], check=True)
     finally:
         cur.execute("SELECT pg_advisory_unlock(727272)")
 conn.close()

@@ -93,6 +93,20 @@ DATABASES = {
 }
 
 
+# Cache
+# https://docs.djangoproject.com/en/6.0/topics/cache/
+# Database-backed so the per-IP click rate limit is shared across every
+# gunicorn worker and container (an in-process cache would give a bot N x the
+# limit). The `clicker_cache` table is created via `createcachetable`.
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'clicker_cache',
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
