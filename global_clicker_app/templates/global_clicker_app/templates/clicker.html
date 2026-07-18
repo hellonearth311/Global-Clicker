@@ -52,7 +52,7 @@
 
         <h1 id="title">global clicker</h1>
         <p id="clicks">total clicks: <span id="clickCount">{{ clicks }}</span></p>
-        <button id="clicker" data-click-url="{% url 'click' %}" onclick="handleClick(event)">click me!</button>
+        <button id="clicker" data-click-url="{% url 'click' %}" data-click-token="{{ click_token }}">click me!</button>
         {% csrf_token %}
         <div id="map"></div>
 
@@ -85,8 +85,9 @@
 
         clickPoints.forEach(click => {
             if (click.lat != null && click.lng != null) {
+                const radius = Math.min(6, 2 + Math.log2(click.count + 1));
                 const marker = L.circleMarker([click.lat, click.lng], {
-                    radius: 2,
+                    radius: radius,
                     fillColor: "#10B981",
                     color: "#10B981",
                     weight: 1,
